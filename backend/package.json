@@ -1,0 +1,22 @@
+{
+  "name": "alumia-backend-lms",
+  "version": "1.0.0",
+  "description": "Learning Management System ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": "git+https://github.com/GSGaldino/alumia-lms.git",
+  "author": "Gabriel Soares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSGaldino/alumia-lms/issues"
+  },
+  "homepage": "https://github.com/GSGaldino/alumia-lms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.6",
+    "nodemon": "^2.0.6",
+    "sqlite3": "^5.0.0"
+  }
+}
