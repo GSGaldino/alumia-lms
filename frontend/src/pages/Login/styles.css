@@ -1,0 +1,34 @@
+.Home{
+  margin: 40px auto;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Home .Login-aluno{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Home .Login-aluno label{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.Home .Login-aluno .links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Home .Login-aluno .links a{
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+}

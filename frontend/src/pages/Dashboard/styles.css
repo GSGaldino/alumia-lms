@@ -1,0 +1,14 @@
+.Dashboard{
+  text-align: center;
+  margin: 40px auto;
+}
+
+.Dashboard .dados{
+  text-align: left;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.Dashboard .dados p{
+  margin: 10px auto;
+}

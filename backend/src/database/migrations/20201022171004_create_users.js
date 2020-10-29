@@ -1,11 +1,19 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('users', table => {
-    table.increments('user_id').notNullable();
-    table.string('email').notNullable();
-    table.string('username').notNullable();
-    table.string('password').notNullable();
-    table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
+  return knex.schema.createTable('usuario', table => {
+    table.increments('cod_aluno').notNullable();
+    table.string('ra').unique().notNullable();
+    table.string('nome').notNullable();
+    table.string('sobrenome').notNullable();
+    table.string('email').unique().notNullable();
+    table.string('status').notNullable();
+    table.string('score');
+    table.string('interacao');
+    table.string('telefone');
+    table.string('telefone2');
+    table.string('ano_ingresso');
+    table.string('permissoes').notNullable();
+    table.timestamp('criado_em').notNullable().defaultTo(knex.fn.now());
   })
 };
 

@@ -2,24 +2,44 @@ const connection = require('../database');
 
 module.exports = {
   async index(req, res){
-    const users = await connection('users').select('*');
+    const users = await connection('usuario').select('*');
 
     res.json(users);
   },
   async create(req, res){
-    const created_at = new Date().getTime();
-    const {email, username, password} = req.body;
+    const criado_em = new Date().getTime();
+    const {
+      ra, 
+      nome, 
+      sobrenome, 
+      email, 
+      status, 
+      score, 
+      interacao, 
+      telefone, 
+      telefone2, 
+      ano_ingresso,
+      permissoes
+    } = req.body;
 
-    const [user_id] = await connection('users')
+    const [user_id] = await connection('usuario')
       .insert({
-        email,
-        username,
-        password,
-        created_at
+        ra, 
+        nome, 
+        sobrenome, 
+        email, 
+        status, 
+        score, 
+        interacao, 
+        telefone, 
+        telefone2, 
+        ano_ingresso,
+        permissoes,
+        criado_em
       })
 
     res.json({
-      message: `success created user with global id: ${user_id}`
+      message: `Aluno com id global: ${user_id} criado com sucesso!`
     })
   }
 }
