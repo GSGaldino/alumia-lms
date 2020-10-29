@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -10,16 +10,18 @@ export default function Dashboard() {
   const [usuario, setUsuario] = useState([]);
   const history = useHistory();
 
-  useEffect(async () => {
-    const response = await api.post('/aluno/dashboard', { ra });
-    setUsuario(response.data);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.post('/dashboard', { ra });
+      setUsuario(response.data);
+    }
+    fetchData();
   }, [ra]);
 
   const handleLogout = () => {
     localStorage.clear();
     history.push('/');
   }
-
   return (
     <div className="Dashboard">
       <h1>Olá, {usuario.nome}</h1>
@@ -39,9 +41,23 @@ export default function Dashboard() {
         <p><strong>Criado em:</strong> {usuario.criado_em}</p>
       </div>
 
-      <button 
-        className="button" 
-        style={{maxWidth: "600px", margin: "10px auto"}}
+      <Link to="alunos/novo">
+        <button
+          className="button"
+          style={{ maxWidth: "600px", margin: "10px auto", display: `${usuario.permissoes === 'Alumia' ? 'block' : 'none'}` }}
+        >Cadastrar Aluno</button>
+      </Link>
+
+      <Link to="/alunos">
+        <button
+          className="button"
+          style={{ maxWidth: "600px", margin: "10px auto", display: `${usuario.permissoes === 'Alumia' ? 'block' : 'none'}` }}
+        >Todos usuários</button>
+      </Link>
+
+      <button
+        className="button"
+        style={{ maxWidth: "600px", margin: "10px auto" }}
         onClick={handleLogout}
       >Logout</button>
     </div>

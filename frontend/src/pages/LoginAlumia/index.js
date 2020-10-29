@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 import api from '../../services/api';
@@ -7,23 +7,23 @@ import api from '../../services/api';
 import './styles.css';
 
 export default function Home() {
-  const [entidade, setEntidade] = useState('Aluno');
-  const [ra, setRa] = useState('');
+  //propriedades de login
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const history = useHistory();
 
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/session', {ra, email})
-      //caso não encontre o aluno
+      const response = await api.post('/session/alumia', {email, password})
+      //caso não encontre o usuario
       if(response.data.message){
-        document.querySelector('.Login-aluno').reset();
+        document.querySelector('.Login-alumia').reset();
         return alert(response.data.message)
       }
 
       //caso de tudo certo
-      localStorage.setItem('ra', response.data.data.ra);
+      localStorage.setItem('ra', response.data.ra);
       history.push('/dashboard');
       
     } catch (error) {
@@ -34,23 +34,24 @@ export default function Home() {
   return (
     <div className="Home">
       <Header
-        entidade={entidade}
+        text="Login Alumia"
       />
 
-      <form className="Login-aluno" onSubmit={handleForm}>
-        <label>
-          RA
-          <input onChange={e => setRa(e.target.value)} type="text" placeholder="RA" required />
-        </label>
+      <form className="Login-alumia" onSubmit={handleForm}>
+
         <label>
           Email
           <input onChange={e => setEmail(e.target.value)} type="email" placeholder="Email" required />
+        </label>
+        <label>
+          Senha
+          <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Senha" required />
         </label>
         <input type="submit" value="Login" className="button" />
 
         <div className="links">
           <a href="/">Sou IES</a>
-          <a href="/">Sou Alumia</a>
+          <Link to="/">Sou Aluno</Link>
         </div>
 
       </form>

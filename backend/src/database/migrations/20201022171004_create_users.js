@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.string('nome').notNullable();
     table.string('sobrenome').notNullable();
     table.string('email').unique().notNullable();
+    table.string('password');
     table.string('status').notNullable();
     table.string('score');
     table.string('interacao');

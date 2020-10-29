@@ -1,0 +1,34 @@
+.Home{
+  margin: 40px auto;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Home .Login-alumia{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Home .Login-alumia label{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.Home .Login-alumia .links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Home .Login-alumia .links a{
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+}
