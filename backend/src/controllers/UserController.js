@@ -23,6 +23,7 @@ module.exports = {
         ano_ingresso,
         permissoes
       } = req.body;
+      console.log(req.body);
 
       const [user_id] = await connection('usuario')
         .insert({
